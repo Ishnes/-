@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walentynka</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6; /* Kolor początkowy */
+            transition: background-color 1s;
+        }
+        #container {
+            margin-top: 50px;
+        }
+        img {
+            width: 250px;
+            height: auto;
+            transition: opacity 1s;
+        }
+        #question {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+			margin-right:10%;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #no {
+            background-color: #666;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="gmi.png" id="image" alt="Obrazek">
+        <div id="question">Czy zostaniesz moją walentynką?</div>
+        <div class="buttons">
+            <button id="yes" onclick="acceptLove()">Tak</button>
+            <button id="no" onclick="moveNo()">Nie</button>
+        </div>
+    </div>
+
+    <script>
+        function acceptLove() {
+            document.getElementById("question").innerText = "Kocham Cie!";
+            document.querySelector(".buttons").style.display = "none";
+            document.body.style.backgroundColor = "#FFC0CB"; // Zmiana tła na kolor kwiatów wiśni
+            document.getElementById("image").src = "img.png"; // Nowy obrazek (zmień na swój link)
+			
+			let image = document.getElementById("image");
+            image.src = "img.png"; // Nowy obrazek (zmień na swój link)
+            image.style.width = "800px"; // Nowa szerokość obrazka
+            image.style.height = "auto"; // Zachowanie proporcji
+        }
+
+        function moveNo() {
+            let btnNo = document.getElementById("no");
+            let maxWidth = window.innerWidth - btnNo.offsetWidth;
+            let maxHeight = window.innerHeight - btnNo.offsetHeight;
+            
+            let newX = Math.random() * maxWidth;
+            let newY = Math.random() * maxHeight;
+
+            btnNo.style.left = newX + "px";
+            btnNo.style.top = newY + "px";
+        }
+    </script>
+</body>
+</html>
